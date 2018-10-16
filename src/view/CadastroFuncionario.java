@@ -23,6 +23,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -845,7 +847,14 @@ public class CadastroFuncionario {
 					funcionario.setNome(txtName.getText());	
 					funcionario.setCodigo(txtCodigo.getText());
 					funcionario.setCpf(txtCpf.getText());
-					funcionario.setDataNascimento(txtData.getText());
+					
+					String dateFormat = "dd/MM/uuuu";
+			    	DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+			    	   .ofPattern(dateFormat)
+			    	   .withResolverStyle(ResolverStyle.STRICT);
+			    	 LocalDate date = LocalDate.parse(txtData.getText(), dateTimeFormatter);
+			    	 funcionario.setDataNascimento(date);
+					
 					funcionario.setEndereco(txtAdress.getText());
 					funcionario.setTelefone(txtTelefone.getText());
 					funcionario.seteMail(txtEmail.getText());

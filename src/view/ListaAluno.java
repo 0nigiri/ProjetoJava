@@ -148,7 +148,7 @@ public class ListaAluno {
 					
 			//		Aluno aluno = Contro ladorAluno.ListaAlunos.get(selectedRowIndex);
 					ControladorAluno controladorAluno = new ControladorAluno();
-					aluno = controladorAluno.consultarUnicoAluno(matricula);
+					//aluno = controladorAluno.consultarUnicoAluno(matricula);
 					controladorAluno.deletarAluno(matricula);
 					
 					selectedRowIndex = tabela.getSelectedRow();

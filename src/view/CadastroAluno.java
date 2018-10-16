@@ -369,14 +369,12 @@ public class CadastroAluno {
 						aluno.setCpf(txtCpf.getText());
 						aluno.setNome(txtName.getText());
 
-						 String dateFormat = "dd/MM/uuuu";
-				    	  
-
-				    	    DateTimeFormatter dateTimeFormatter = DateTimeFormatter
-				    	    .ofPattern(dateFormat)
-				    	    .withResolverStyle(ResolverStyle.STRICT);
-				    	    LocalDate date = LocalDate.parse(txtData.getText(), dateTimeFormatter);
-				    	    aluno.setDataNascimento(date);
+						String dateFormat = "dd/MM/uuuu";
+				    	DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+				    	   .ofPattern(dateFormat)
+				    	   .withResolverStyle(ResolverStyle.STRICT);
+				    	 LocalDate date = LocalDate.parse(txtData.getText(), dateTimeFormatter);
+				    	 aluno.setDataNascimento(date);
 						
 				    	aluno.setEndereco(txtAdress.getText());
 						aluno.setTelefone(txtTelefone.getText());

@@ -38,7 +38,7 @@ public class AlunoDAO {
 			
 			StringBuffer sql = new StringBuffer();
 			
-			sql.append("INSERT INTO aluno( nome, cpf, data_de_nascimento, endereco, telefone, email, sexo, curso)");
+			sql.append("INSERT INTO aluno( nome_aluno, cpf_aluno, data_de_nascimento_aluno, endereco_aluno, telefone_aluno, email_aluno, sexo_aluno, curso_aluno) ");
 			sql.append("VALUES(?,?,?,?,?,?,?,?)");
 
 			stmt = conn.prepareStatement(sql.toString());
@@ -68,7 +68,7 @@ public class AlunoDAO {
 			db.finalizaObjetos(rs, stmt, conn);
 		}
 		
-		System.out.println("Professor " + aluno.getNome() + " da disciplina " + aluno.getCurso() + " cadastrado com sucesso!");
+		System.out.println("Aluno " + aluno.getNome() + " da disciplina " + aluno.getCurso() + " cadastrado com sucesso!");
 	}
 	
 	
@@ -83,9 +83,9 @@ public class AlunoDAO {
 		try {
 			conn = db.obterConexao();
 
-			String sql = "SELECT  matricula, nome, cpf, data_de_nascimento, endereco, telefone, email, sexo, curso "
+			String sql = "SELECT  matricula_aluno, nome_aluno, cpf_aluno, data_de_nascimento_aluno, endereco_aluno, telefone_aluno, email_aluno, sexo_aluno, curso_aluno  "
 					+ "FROM  aluno "
-					+ "ORDER BY matricula ASC";
+					+ "ORDER BY matricula_aluno ASC";
 
 			stmt = conn.prepareStatement(sql.toString());
 
@@ -96,15 +96,15 @@ public class AlunoDAO {
 			while (rs.next()) {
 				Aluno aluno = new Aluno();
 
-				aluno.setMatricula(rs.getInt("matricula"));
-				aluno.setNome(rs.getString("nome"));
-				aluno.setCpf(rs.getString("cpf"));
-				aluno.setDataNascimento(rs.getDate("data_de_nascimento").toLocalDate());
-				aluno.setEndereco(rs.getString("endereco"));
-				aluno.setTelefone(rs.getString("telefone"));
-				aluno.seteMail(rs.getString("email"));
-				aluno.setSexo(rs.getString("sexo"));
-				aluno.setCurso(rs.getString("curso"));
+				aluno.setMatricula(rs.getInt("matricula_aluno"));
+				aluno.setNome(rs.getString("nome_aluno"));
+				aluno.setCpf(rs.getString("cpf_aluno"));
+				aluno.setDataNascimento(rs.getDate("data_de_nascimento_aluno").toLocalDate());
+				aluno.setEndereco(rs.getString("endereco_aluno"));
+				aluno.setTelefone(rs.getString("telefone_aluno"));
+				aluno.seteMail(rs.getString("email_aluno"));
+				aluno.setSexo(rs.getString("sexo_aluno"));
+				aluno.setCurso(rs.getString("curso_aluno"));
 
 				
 				listaAluno.add(aluno);
@@ -133,9 +133,9 @@ public class AlunoDAO {
 		try {
 			conn = db.obterConexao();
 
-			String sql = "SELECT  matricula, nome, cpf, data_de_nascimento, endereco, telefone, email, sexo, curso "
+			String sql = "SELECT matricula_aluno, nome_aluno, cpf_aluno, data_de_nascimento_aluno, endereco_aluno, telefone_aluno, email_aluno, sexo_aluno, curso_aluno "
 					+ "FROM  aluno "
-					+ "WHERE matricula = ?";
+					+ "WHERE matricula_aluno = ?";
 
 			stmt = conn.prepareStatement(sql.toString());
 			stmt.setInt(1, matricula);
@@ -143,15 +143,15 @@ public class AlunoDAO {
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				aluno.setMatricula(rs.getInt("matricula"));
-				aluno.setNome(rs.getString("nome"));
-				aluno.setCpf(rs.getString("cpf"));
-				aluno.setDataNascimento(rs.getDate("data_de_nascimento").toLocalDate());
-				aluno.setEndereco(rs.getString("endereco"));
-				aluno.setTelefone(rs.getString("telefone"));
-				aluno.seteMail(rs.getString("email"));
-				aluno.setSexo(rs.getString("sexo"));
-				aluno.setCurso(rs.getString("curso"));
+				aluno.setMatricula(rs.getInt("matricula_aluno"));
+				aluno.setNome(rs.getString("nome_aluno"));
+				aluno.setCpf(rs.getString("cpf_aluno"));
+				aluno.setDataNascimento(rs.getDate("data_de_nascimento_aluno").toLocalDate());
+				aluno.setEndereco(rs.getString("endereco_aluno"));
+				aluno.setTelefone(rs.getString("telefone_aluno"));
+				aluno.seteMail(rs.getString("email_aluno"));
+				aluno.setSexo(rs.getString("sexo_aluno"));
+				aluno.setCurso(rs.getString("curso_aluno"));
 			}
 
 		} catch (SQLException e) {
@@ -178,7 +178,7 @@ public class AlunoDAO {
 			//sql.append("UPDATE nome_tabela SET nome_campo = ? ");
 			sql.append("DELETE FROM aluno ");
 			//sql.append("WHERE nome_campo_id = ?;");
-			sql.append("WHERE matricula = ? ");
+			sql.append("WHERE matricula_aluno = ? ");
 			
 			stmt = conn.prepareStatement(sql.toString());
 			
@@ -225,16 +225,16 @@ public class AlunoDAO {
 			//sql.append("UPDATE nome_tabela SET nome_campo = ? ");
 			sql.append("UPDATE aluno "
 					+ "SET "
-					+ "nome = ? ,"
-					+ "cpf = ? ,"
-					+ "data_de_nascimento = ? ,"
-					+ "endereco = ? ,"
-					+ "telefone = ? ,"
-					+ "email = ? ,"
-					+ "sexo = ? ,"
-					+ "curso = ? ");
+					+ "nome_aluno = ? ,"
+					+ "cpf_aluno = ? ,"
+					+ "data_de_nascimento_aluno = ? ,"
+					+ "endereco_aluno = ? ,"
+					+ "telefone_aluno = ? ,"
+					+ "email_aluno = ? ,"
+					+ "sexo_aluno = ? ,"
+					+ "curso_aluno = ? ");
 			//sql.append("WHERE nome_campo_id = ?;");
-			sql.append("WHERE matricula = ? ");
+			sql.append("WHERE matricula_aluno = ? ");
 			
 			stmt = conn.prepareStatement(sql.toString());
 			
