@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import controller.ControladorAluno;
 import controller.ControladorFuncionario;
 import model.Funcionario;
 
@@ -48,9 +49,11 @@ public class ListaFuncionario {
 
 
 	public static void inicializarListaFuncionario() {
+		
+		tableModel.setRowCount(0);
 
 		ControladorFuncionario controladorFuncionario = new ControladorFuncionario();
-		for (Funcionario funcionario : ControladorFuncionario.ListaFuncionario) {
+		for (Funcionario funcionario : controladorFuncionario.consultarListaFuncionario()) {
 			Object[] data = { funcionario.getCodigo(), funcionario.getNome(), funcionario.getCargo() ,
 					funcionario.getDataNascimento(), funcionario.getCpf(), funcionario.geteMail(),
 					funcionario.getEndereco(), funcionario.getSexo(), funcionario.getSalario(),
@@ -61,27 +64,14 @@ public class ListaFuncionario {
 	}
 	
 
-	
-	public static void adicionarNaListaFuncionario() {
-		ControladorFuncionario controladorFuncionario= new ControladorFuncionario();
-		int tamanhoLista = controladorFuncionario.ListaFuncionario.size();
 
-		Funcionario funcionario = controladorFuncionario.ListaFuncionario.get(tamanhoLista - 1);//ultimo professor incluso
-		
-		Object[] data = {funcionario.getCodigo(), funcionario.getNome(), funcionario.getCargo() ,
-				funcionario.getDataNascimento(), funcionario.getCpf(), funcionario.geteMail(),
-				funcionario.getEndereco(), funcionario.getSexo(), funcionario.getSalario(),
-				funcionario.getValeAlimentacao(), funcionario.getValeRefeicao(), funcionario.getValeTransporte(),
-				funcionario.getDisciplina() };
-		tableModel.addRow(data);
-	}
 	
 
 	public static void editarNaListaFuncionario() {
 		ControladorFuncionario controladorFuncionario = new ControladorFuncionario();
-		int tamanhoLista = controladorFuncionario.ListaFuncionario.size();
-
-		Funcionario funcionario = controladorFuncionario.ListaFuncionario.get(selectedRowIndex);//ultimo professor incluso
+		
+		//int tamanhoLista = controladorFuncionario.ListaFuncionario.size();
+		//Funcionario funcionario = controladorFuncionario.ListaFuncionario.get(selectedRowIndex);//ultimo professor incluso
 		
 		Object[] data = {funcionario.getCodigo(), funcionario.getNome(), funcionario.getCargo() ,
 				funcionario.getDataNascimento(), funcionario.getCpf(), funcionario.geteMail(),
@@ -136,10 +126,15 @@ public class ListaFuncionario {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+
 				selectedRowIndex = tabela.getSelectedRow();
-				Funcionario funcionario= ControladorFuncionario.ListaFuncionario.get(selectedRowIndex);
-				EditarFuncionario EditarFuncionario =  new EditarFuncionario(funcionario, selectedRowIndex);
+				int codigo = (int) tabela.getValueAt(tabela.getSelectedRow(), 0);
 				
+		//		Aluno aluno = Contro ladorAluno.ListaAlunos.get(selectedRowIndex);
+				ControladorFuncionario controladorFuncionario= new ControladorFuncionario();
+				funcionario = controladorFuncionario.consultarUnicoFuncionario(codigo);
+				
+				EditarFuncionario editarFuncionario=  new EditarFuncionario(funcionario, selectedRowIndex);
 			}
 		});
 		

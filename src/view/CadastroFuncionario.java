@@ -349,17 +349,7 @@ public class CadastroFuncionario {
 		frame.getContentPane().add(txtName);
 		txtName.setColumns(10);
 		
-		//Codigo do Cadastro
-		
-		lblCodigo = new JLabel("Código do cadastro:");
-		lblCodigo.setBounds(65, 50, 140, 14);
-		frame.getContentPane().add(lblCodigo);
-		
-		txtCodigo = new JtextFieldSomenteNumeros(9);
-		txtCodigo.setBounds(210, 50, 80, 20);
-		frame.getContentPane().add(txtCodigo);
-		txtCodigo.setColumns(10);
-		
+
 		
 		
 		
@@ -383,11 +373,11 @@ public class CadastroFuncionario {
 		
 		// Campo texto Data de Telefone:
 		lblTelefone = new JLabel("Telefone: ");
-		lblTelefone.setBounds( 300, 50, 76, 20);
+		lblTelefone.setBounds( 65, 50, 76, 20);
 		frame.getContentPane().add(lblTelefone);
 
 		txtTelefone = new JFormattedTextField(telefone);
-		txtTelefone.setBounds(360, 50, 100, 20);
+		txtTelefone.setBounds(210, 50, 115, 20);
 		frame.getContentPane().add(txtTelefone);
 		
 
@@ -845,7 +835,6 @@ public class CadastroFuncionario {
 					
 					funcionario = new Funcionario();
 					funcionario.setNome(txtName.getText());	
-					funcionario.setCodigo(txtCodigo.getText());
 					funcionario.setCpf(txtCpf.getText());
 					
 					String dateFormat = "dd/MM/uuuu";
@@ -871,7 +860,7 @@ public class CadastroFuncionario {
 					controladorFuncionario.cadastrarFuncionario(funcionario);
 				
 					
-					ListaFuncionario.adicionarNaListaFuncionario();
+					ListaFuncionario.inicializarListaFuncionario();
 				}
 			}
 		});

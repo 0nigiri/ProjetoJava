@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Funcionario extends Pessoa {
 	public String cargo;
-	public String codigo;
+	public int codigo;
 	public String salario;
 	public String valeAlimentacao;
 	public String valeRefeicao;
@@ -19,11 +19,11 @@ public class Funcionario extends Pessoa {
 
 
 
-	public String getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 

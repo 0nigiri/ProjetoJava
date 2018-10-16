@@ -1,12 +1,6 @@
 package view;
 
-/*	inicio	27/9 - 15:00 -	17:30 	-> 	mudanca na validação da data de nascimento
-*			28/9 - 13:30 -	14:00   ->	finalizando validacao da data de nascimento  
-*				   14:00 -	16:00	->	inicio  matricula, apenas aceitar numeroes e com limite de 9 digitos		
-*				   16:00 -	16:10	->	atualizando CPF para apenas numeros e com limite de 11 digitos
-*				   16:10 -	16:55	->	Atualizar cadastro professor com a nova validacao de data de nascimento e cpf
-*	Concluido	   16:55 -	17:25	->	Teste do programa 
-*/
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -144,20 +138,7 @@ public class CadastroAluno {
 		frame.getContentPane().add(lblName);
 		
 		
-	/*	
-	//Matricula
-		
-		lblMatricula = new JLabel("Numero de matricula: ");
-		lblMatricula.setBounds(60, 60, 131, 20);
-		frame.getContentPane().add(lblMatricula);
-		
-		txtMatricula = new JtextFieldSomenteNumeros(9);
 
-		txtMatricula.setBounds(190, 60, 150, 20);
-		frame.getContentPane().add(txtMatricula);
-
-	 */
-	
 		// Data de Nascimento
 		
 		

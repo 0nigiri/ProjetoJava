@@ -1,29 +1,43 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import dao.FuncionarioDAO;
 import model.Funcionario;
 
 public class ControladorFuncionario{
-	
-	public static ArrayList<Funcionario> ListaFuncionario;
-	
-	
-	public ControladorFuncionario() {
-		if (ListaFuncionario == null) {
-			ListaFuncionario  = new ArrayList<Funcionario>();
-		}		
+
+
+	public List<Funcionario> consultarListaFuncionario(){
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		return funcionarioDAO.consultarListaFuncionario();
+		
 	}
 	
+	public Funcionario  consultarUnicoFuncionario(int codigo){
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		return funcionarioDAO.consultarFuncionario(codigo);
+		
+	}
+	
+	
+	public Funcionario  deletarFuncionario(int codigo){
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		funcionarioDAO.deletarFuncionario(codigo);
+		return null;
+		
+	}
+	
+	
 	public void cadastrarFuncionario(Funcionario funcionario) {
-		ListaFuncionario .add(funcionario);
-		System.out.println("Aluno " + funcionario.getNome() + " do curso " + funcionario.getCargo() + " cadastrado com sucesso!");
-		System.out.println("Qtd funcionario: " +  ListaFuncionario.size());
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		funcionarioDAO.cadastrarFuncionario(funcionario);
+		
 	}
 	
 	public void editarFuncionario(Funcionario funcionario, int index) {
-		ListaFuncionario.set(index, funcionario);
-		System.out.println("Aluno " + funcionario.getNome() + " do curso " + funcionario.getCargo() + " cadastrado com sucesso!");
-		System.out.println("Qtd Aluno: " +  ListaFuncionario.size());
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		funcionarioDAO.alterarFuncionario(funcionario);
 	}
 }
